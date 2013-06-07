@@ -1,0 +1,21 @@
+{
+  "name": "Whatube",
+  "version": "1.0",
+  "description": "Show the names of videos in youtube links.",
+
+  "permissions": ["http://www.youtube.com/watch?*",
+                  "https://www.youtube.com/watch?*"],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts" : [
+        {
+            "matches": ["https://www.facebook.com/*"],
+            "js":["content.js"]
+            }
+    ],
+
+  "manifest_version": 2
+}

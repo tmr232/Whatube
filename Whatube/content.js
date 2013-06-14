@@ -18,7 +18,15 @@ function setYoutubeLinkTitles() {
     $("a").each(function (index, value) {
         if (this.title === "") {
             getYoutubeTitle(this.href, function (title) {
+                // Set the title.
                 value.title = title;
+
+                // If the link displays a youtube link, replace it with the title.
+                var text = $(value).text();
+                var match = text.match(youtubeLinkPattern);
+                if ((match !== null) && (match[0] === text)) {
+                    $(value).text(title);
+                }
             });
         }
     });

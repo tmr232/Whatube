@@ -1,22 +1,24 @@
 {
-  "name": "Whatube",
-  "version": "1.0",
-  "description": "Show the names of videos in youtube links.",
+    "name": "Whatube",
+    "version": "1.0",
+    "description": "Show the names of videos in youtube links.",
 
-  "permissions": ["http://www.youtube.com/watch?*",
-                  "https://www.youtube.com/watch?*"],
+    "permissions": ["http://www.youtube.com/watch?*",
+        "https://www.youtube.com/watch?*",
+        "http://vimeo.com/api/v2/video/*",
+        "https://vimeo.com/api/v2/video/*"],
 
-  "background": {
-    "scripts": ["jquery-2.0.2.min.js", "background.js"]
-  },
+    "background": {
+        "scripts": ["jquery-2.0.2.min.js", "background.js"]
+    },
 
-  "content_scripts" : [
+    "content_scripts": [
         {
             "matches": ["https://www.facebook.com/*"],
-            "js":["jquery-2.0.2.min.js", "mutation_summary.js", "content.js"],
+            "js": ["jquery-2.0.2.min.js", "mutation_summary.js", "content.js"],
             "all_frames": true
-            }
+        }
     ],
 
-  "manifest_version": 2
+    "manifest_version": 2
 }

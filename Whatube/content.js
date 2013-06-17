@@ -1,7 +1,7 @@
 var changeText = true;
 
 
-var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)(.*)&?.*/i;
+var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
 function getYoutubeTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));

@@ -3,6 +3,9 @@ var changeText = true;
 
 var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
+
+var youtubeHintUrl = chrome.extension.getURL("images/youtube.png");
+
 function getYoutubeTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));
     if (null === match) {
@@ -12,6 +15,15 @@ function getYoutubeTitle(url, callback) {
     var message = match[match.length - 1];
 
     chrome.runtime.sendMessage(message, callback);
+}
+
+
+var youtubeHintImg = $(document.createElement('img'))
+    .attr('src', youtubeHintUrl)
+    .css('margin-right', '4px');
+
+function makeTitle(titleText) {
+    return $(document.createElement('span')).text(titleText);
 }
 
 function setYoutubeLinkTitles() {
@@ -26,7 +38,14 @@ function setYoutubeLinkTitles() {
                     var text = $(value).text();
                     var match = text.match(facebookYoutubePattern);
                     if ((match !== null) && (match[0] === text)) {
-                        $(value).text(title);
+                        console.log($(value).css('direction'));
+                        if ($(value).css('direction') === 'rtl') {
+                            console.log("A");
+                            $(value).empty().append(title).append(youtubeHintImg.clone());
+                        } else {
+                            console.log("B");
+                            $(value).empty().append(youtubeHintImg.clone()).append(title);
+                        }
                     }
                 }
             });

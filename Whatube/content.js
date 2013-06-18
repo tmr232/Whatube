@@ -4,7 +4,7 @@ var changeText = true;
 var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
 
-var youtubeHintUrl = chrome.extension.getURL("images/youtube.png");
+var youtubeHintUrl = chrome.extension.getURL("images/youtube_fb.png");
 
 function getYoutubeTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));
@@ -20,7 +20,8 @@ function getYoutubeTitle(url, callback) {
 
 var youtubeHintImg = $(document.createElement('img'))
     .attr('src', youtubeHintUrl)
-    .css('margin-right', '4px');
+    .css('margin-right', '4px')
+    .css('margin-bottom', '-2px');
 
 function makeTitle(titleText) {
     return $(document.createElement('span')).text(titleText);

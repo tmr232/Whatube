@@ -1,4 +1,5 @@
 var changeText = true;
+var addIcon = true;
 
 var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
@@ -21,6 +22,18 @@ var youtubeHintImg = $(document.createElement('img'))
     .css('margin-right', '4px')
     .css('margin-bottom', '-2px');
 
+function modifyLink(link, title) {
+    if (!addIcon) {
+        $(link).text(title);
+    } else {
+        if ($(link).css('direction') === 'rtl') {
+            $(link).empty().append(title).append(youtubeHintImg.clone());
+        } else {
+            $(link).empty().append(youtubeHintImg.clone()).append(title);
+        }
+    }
+}
+
 function setYoutubeLinkTitles() {
     $("a").each(function (index, value) {
         if (this.title === "") {
@@ -33,12 +46,7 @@ function setYoutubeLinkTitles() {
                     var text = $(value).text();
                     var match = text.match(facebookYoutubePattern);
                     if ((match !== null) && (match[0] === text)) {
-                        console.log($(value).css('direction'));
-                        if ($(value).css('direction') === 'rtl') {
-                            $(value).empty().append(title).append(youtubeHintImg.clone());
-                        } else {
-                            $(value).empty().append(youtubeHintImg.clone()).append(title);
-                        }
+                        modifyLink(value, title);
                     }
                 }
             });

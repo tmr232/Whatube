@@ -1,14 +1,3 @@
-//function getPageTitle(pageUrl, callback) {
-//    var xhr = new XMLHttpRequest();
-//    xhr.onload = function () {
-//        console.log(this.responseXML.title);
-//        callback(this.responseXML.title);
-//    };
-//    xhr.open("GET", pageUrl);
-//    xhr.responseType = "document";
-//    xhr.send();
-//}
-
 function getPageTitle(videoId, callback) {
     var apiUrl = "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?v=2&alt=json";
     $.getJSON(apiUrl, function(data) {

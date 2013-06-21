@@ -9,9 +9,6 @@ function getPageTitle(videoId, callback) {
 
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        console.log(request);
-//        var url = "https://www.youtube.com/watch?v=" + request;
-//        getPageTitle(url, sendResponse);
         getPageTitle(request, sendResponse);
         return true;
     });

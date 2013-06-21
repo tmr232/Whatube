@@ -73,8 +73,13 @@ function titleSwapFactory(anchor) {
         if (changeText) {
             // If the link displays a youtube link, replace it with the title.
             var text = $(anchor).text();
-            if (matchPattern(text, facebookYoutubePattern) || matchPattern(text, youtubePlaylistPattern)) {
+            if (matchPattern(text, facebookYoutubePattern)) {
+                // Modify for video
                 modifyLink(anchor, title);
+            } else if (matchPattern(text, youtubePlaylistPattern)) {
+                // Modify for playlist
+                //TODO: maybe add number of songs here? (.feed.entry.length)
+                modifyLink(anchor, title + " (playlist)");
             }
         }
     };

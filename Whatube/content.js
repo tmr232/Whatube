@@ -3,8 +3,20 @@ var addIcon = true;
 
 var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
+var youtubePlaylistPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?youtube\.com\/playlist\?.*list=([^%^=^&]*)&?.*/i;
 
-function getYoutubeTitle(url, callback) {
+
+function sendMessage(type, message, callback) {
+    chrome.runtime.sendMessage(
+        {
+            "type": type,
+            "message": message
+        },
+        callback
+    );
+}
+
+function getYoutubeVideoTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));
     if (null === match) {
         return false;
@@ -12,7 +24,21 @@ function getYoutubeTitle(url, callback) {
 
     var message = match[match.length - 1];
 
-    chrome.runtime.sendMessage(message, callback);
+    sendMessage("video", message, callback);
+
+    return true;
+}
+
+function getYoutubePlaylistTitle(url, callback) {
+    var match = youtubePlaylistPattern.exec(unescape(url));
+    if (null === match) {
+        return false;
+    }
+    console.log(url);
+    var message = match[match.length - 1];
+    console.log(message);
+
+    sendMessage("playlist", message, callback);
 }
 
 
@@ -34,22 +60,34 @@ function modifyLink(link, title) {
     }
 }
 
+function matchPattern(text, pattern) {
+    var match = text.match(pattern);
+    return ((match !== null) && (match[0] === text));
+}
+
+function titleSwapFactory(anchor) {
+    return function (title) {
+        // Set the title.
+        anchor.title = title;
+
+        if (changeText) {
+            // If the link displays a youtube link, replace it with the title.
+            var text = $(anchor).text();
+            if (matchPattern(text, facebookYoutubePattern) || matchPattern(text, youtubePlaylistPattern)) {
+                modifyLink(anchor, title);
+            }
+        }
+    };
+}
+
 function setYoutubeLinkTitles() {
     $("a").each(function (index, value) {
         if (this.title === "") {
-            getYoutubeTitle(this.href, function (title) {
-                // Set the title.
-                value.title = title;
-
-                if (changeText) {
-                    // If the link displays a youtube link, replace it with the title.
-                    var text = $(value).text();
-                    var match = text.match(facebookYoutubePattern);
-                    if ((match !== null) && (match[0] === text)) {
-                        modifyLink(value, title);
-                    }
-                }
-            });
+            var titleFound = false;
+            titleFound = getYoutubeVideoTitle(this.href, titleSwapFactory(value));
+            if (!titleFound) {
+                getYoutubePlaylistTitle(this.href, titleSwapFactory(value));
+            }
         }
     });
 }

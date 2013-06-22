@@ -107,3 +107,15 @@ var observer = new MutationSummary({
 
 // Swap all current link titles
 setYoutubeLinkTitles();
+
+
+// Open first article's comments
+
+// Get all articles
+var articles = $("div[role=article]");
+
+// Swap CSS classes to show the contents
+//$($(articles[0]).find("form")[0]).removeClass("collapsed_comments hidden_add_comment");
+
+// This is the important line - it loads all comments! (clicks the "view more comments" link
+$(articles[0]).find("a.UFIPagerLink")[0].click();

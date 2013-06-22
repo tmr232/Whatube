@@ -47,16 +47,16 @@ var youtubeHintImg = $(document.createElement('img'))
     .attr('src', youtubeHintUrl)
     .css('margin-right', '4px')
     .css('margin-bottom', '-2px');
+var youtubeHintDiv = $(document.createElement('div'))
+    .css('direction', 'ltr')
+    .append(youtubeHintImg);
 
 function modifyLink(link, title) {
     if (!addIcon) {
         $(link).text(title);
     } else {
-        if ($(link).css('direction') === 'rtl') {
-            $(link).empty().append(title).append(youtubeHintImg.clone());
-        } else {
-            $(link).empty().append(youtubeHintImg.clone()).append(title);
-        }
+        //HACK: currently only LTR is supported, so Hebrew titles will look weird.
+        $(link).empty().append(youtubeHintDiv.clone().append(title));
     }
 }
 

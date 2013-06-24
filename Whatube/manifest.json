@@ -1,6 +1,6 @@
 {
     "name": "Whatube",
-    "version": "1.0",
+    "version": "0.0.0.1",
     "description": "Show the names of videos in youtube links.",
 
     "permissions": ["http://www.youtube.com/watch?*",

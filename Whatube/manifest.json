@@ -3,17 +3,28 @@
     "version": "0.0.0.1",
     "description": "Show the names of videos in Youtube links.",
 
-    "permissions": ["http://www.youtube.com/watch?*",
-        "https://www.youtube.com/watch?*"],
+    "permissions": [
+        "http://www.youtube.com/watch?*",
+        "https://www.youtube.com/watch?*"
+    ],
 
     "background": {
-        "scripts": ["jquery-2.0.2.min.js", "background.js"]
+        "scripts": [
+            "jquery-2.0.2.min.js",
+            "background.js"
+        ]
     },
 
     "content_scripts": [
         {
-            "matches": ["https://www.facebook.com/*"],
-            "js": ["jquery-2.0.2.min.js", "mutation_summary.js", "content.js"],
+            "matches": [
+                "https://www.facebook.com/*"
+            ],
+            "js": [
+                "jquery-2.0.2.min.js",
+                "mutation_summary.js",
+                "content.js"
+            ],
             "all_frames": true
         }
     ],

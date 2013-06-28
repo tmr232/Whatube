@@ -16,6 +16,7 @@ function sendMessage(type, message, callback) {
     );
 }
 
+
 function getYoutubeVideoTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));
     if (null === match) {
@@ -34,11 +35,12 @@ function getYoutubePlaylistTitle(url, callback) {
     if (null === match) {
         return false;
     }
-    console.log(url);
+
     var message = match[match.length - 1];
-    console.log(message);
 
     sendMessage("playlist", message, callback);
+
+    return true;
 }
 
 
@@ -47,19 +49,45 @@ var youtubeHintImg = $(document.createElement('img'))
     .attr('src', youtubeHintUrl)
     .css('margin-right', '4px')
     .css('margin-bottom', '-2px');
-var youtubeHintDiv = $(document.createElement('div'))
+var youtubeHintDivLtr = $(document.createElement('div'))
     .css('direction', 'ltr')
-    .append(youtubeHintImg);
+    .append(youtubeHintImg.clone());
 
+var youtubeHintDivRtl = $(document.createElement('div'))
+    .css('direction', 'rtl')
+    .append(youtubeHintImg.clone());
+
+
+var hebrewRegex = /[\u0590-\u05FF]/;
+function containsHebrew(text) {
+    return hebrewRegex.test(text);
+}
+
+//TODO: swap image alignment based on page direction (other side for Hebrew page).
+
+/**
+ * Gets a link (<a> element) and modifies its contents
+ * @param link the link to modify
+ * @param title the new title to set
+ */
 function modifyLink(link, title) {
     if (!addIcon) {
         $(link).text(title);
     } else {
-        //HACK: currently only LTR is supported, so Hebrew titles will look weird.
-        $(link).empty().append(youtubeHintDiv.clone().append(title));
+        if (containsHebrew(title)) {
+            $(link).empty().append(youtubeHintDivRtl.clone().prepend(title));
+        } else {
+            $(link).empty().append(youtubeHintDivLtr.clone().append(title));
+        }
     }
 }
 
+/**
+ * Checks if a regex pattern matches an entire string
+ * @param text the string to match
+ * @param pattern the regex pattern to check
+ * @returns {boolean} true if it matches
+ */
 function matchPattern(text, pattern) {
     var match = text.match(pattern);
     return ((match !== null) && (match[0] === text));

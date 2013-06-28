@@ -18,7 +18,7 @@
    inkscape:export-filename="C:\Users\bahar\Documents\Tamir\Web\Whatube\WhatubeLogo.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="WhatubeLogoBlue.svg">
   <defs
      id="defs4">
     <linearGradient
@@ -89,7 +89,7 @@
        x2="122.81532"
        y1="996.20312"
        x1="61.080925"
-       gradientTransform="translate(739.51421,-486.91169)"
+       gradientTransform="matrix(1.2978528,0,0,1.2978529,720.54668,-782.77373)"
        gradientUnits="userSpaceOnUse"
        id="linearGradient4251"
        xlink:href="#linearGradient3767"
@@ -103,10 +103,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="78.366846"
+     inkscape:cx="-84.267714"
      inkscape:cy="97.147084"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3849"
      showgrid="false"
      inkscape:window-width="1920"
      inkscape:window-height="1005"
@@ -132,7 +132,10 @@
      transform="translate(0,-924.36215)">
     <g
        id="g3849"
-       transform="matrix(0.75,0,0,0.75,-541.29582,610.45306)">
+       transform="matrix(0.75,0,0,0.75,-541.29582,610.45306)"
+       inkscape:export-filename="C:\Users\bahar\Documents\Tamir\Web\Whatube\Whatube\icon16.png"
+       inkscape:export-xdpi="15"
+       inkscape:export-ydpi="15">
       <rect
          rx="20"
          ry="20"
@@ -141,18 +144,24 @@
          height="128"
          width="128"
          id="rect2985"
-         style="fill:url(#linearGradient3858);fill-opacity:1;stroke:none" />
+         style="fill:url(#linearGradient3858);fill-opacity:1;stroke:none"
+         inkscape:export-filename="C:\Users\bahar\Documents\Tamir\Web\Whatube\Whatube\icon16.png"
+         inkscape:export-xdpi="15"
+         inkscape:export-ydpi="15" />
       <text
          transform="scale(1.0050121,0.9950129)"
          sodipodi:linespacing="125%"
          id="text3763"
-         y="536.76263"
-         x="778.79248"
-         style="font-size:84.70565796px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient4251);fill-opacity:1;stroke:#a9692a;stroke-width:1;stroke-linecap:butt;stroke-opacity:0.37711864;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
-         xml:space="preserve"><tspan
-           style="font-size:84.70565796px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient4251);fill-opacity:1;stroke-width:1;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
-           y="536.76263"
-           x="778.79248"
+         y="545.80499"
+         x="771.52411"
+         style="font-size:109.93547821px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient4251);fill-opacity:1;stroke:#a9692a;stroke-width:1.29785287;stroke-linecap:butt;stroke-opacity:0.37711864;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
+         xml:space="preserve"
+         inkscape:export-filename="C:\Users\bahar\Documents\Tamir\Web\Whatube\Whatube\icon16.png"
+         inkscape:export-xdpi="15"
+         inkscape:export-ydpi="15"><tspan
+           style="font-size:109.93547821px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient4251);fill-opacity:1;stroke-width:1.29785287;font-family:Arial Rounded MT Bold;-inkscape-font-specification:'Arial Rounded MT Bold,'"
+           y="545.80499"
+           x="771.52411"
            id="tspan3765"
            sodipodi:role="line">?</tspan></text>
     </g>

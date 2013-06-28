@@ -1,3 +1,8 @@
+/**
+ * Get video title using Youtube API
+ * @param videoId the id of the video (youtube.com/watch?v=videoId)
+ * @param callback to be called with the resulting title
+ */
 function getVideoTitle(videoId, callback) {
     var apiUrl = "http://gdata.youtube.com/feeds/api/videos/" + videoId + "?v=2&alt=json";
     $.getJSON(apiUrl, function (data) {
@@ -6,6 +11,11 @@ function getVideoTitle(videoId, callback) {
     });
 }
 
+/**
+ * Get playlist title using Youtube API
+ * @param playlistId the id of the video (youtube.com/playlist?list=playlistId)
+ * @param callback to be called with the resulting title
+ */
 function getPlaylistTitle(playlistId, callback) {
     var apiUrl = "http://gdata.youtube.com/feeds/api/playlists/" + playlistId + "?v=2&alt=json";
     $.getJSON(apiUrl, function (data) {

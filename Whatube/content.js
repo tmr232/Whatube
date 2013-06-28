@@ -5,7 +5,12 @@ var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(h
 
 var youtubePlaylistPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(www\.)?youtube\.com\/playlist\?.*list=([^%^=^&]*)&?.*/i;
 
-
+/**
+ * Sends a request message to the background page.
+ * @param type message type - 'video' or 'playlist'
+ * @param message the message to send - the ID
+ * @param callback to be called with the new title
+ */
 function sendMessage(type, message, callback) {
     chrome.runtime.sendMessage(
         {
@@ -16,7 +21,12 @@ function sendMessage(type, message, callback) {
     );
 }
 
-
+/**
+ * Get the title of a Youtube video from the URL
+ * @param url the video URL
+ * @param callback to be called with the resulting title
+ * @returns {boolean} true if the url is a valid video url
+ */
 function getYoutubeVideoTitle(url, callback) {
     var match = facebookYoutubePattern.exec(unescape(url));
     if (null === match) {
@@ -30,6 +40,13 @@ function getYoutubeVideoTitle(url, callback) {
     return true;
 }
 
+
+/**
+ * Get the title of a Youtube playlist from the URL
+ * @param url the playlist URL
+ * @param callback to be called with the resulting title
+ * @returns {boolean} true if the url is a valid playlist url
+ */
 function getYoutubePlaylistTitle(url, callback) {
     var match = youtubePlaylistPattern.exec(unescape(url));
     if (null === match) {
@@ -112,6 +129,7 @@ function titleSwapFactory(anchor) {
         }
     };
 }
+
 
 function setYoutubeLinkTitles() {
     $("a").each(function (index, value) {

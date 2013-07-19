@@ -5,6 +5,9 @@ var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(h
 
 var youtubePlaylistPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(m\.|www\.)?youtube\.com\/playlist\?.*list=([^%^=^&]*)&?.*/i;
 
+var mobileSwapPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(m\.|www\.)?(youtube\.com\/.*|youtu.be\/.*)/i;
+var mobileSwapTarget = "$1$2$3$4www.$6";
+
 /**
  * Sends a request message to the background page.
  * @param type message type - 'video' or 'playlist'

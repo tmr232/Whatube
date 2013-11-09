@@ -3,6 +3,8 @@ var addIcon = true;
 
 var facebookYoutubePattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(m\.|www\.)?(youtube\.com\/watch\?.*v=|youtu\.be\/)([^%^=^&]*)&?.*/i;
 
+var facebookShortenedText = "http://www.youtube.com/watch...";
+
 var youtubePlaylistPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(m\.|www\.)?youtube\.com\/playlist\?.*list=([^%^=^&]*)&?.*/i;
 
 var mobileSwapPattern = /((https?:\/\/)?(www\.)facebook.com\/l\.php\?u=)?(https?:\/\/)?(m\.|www\.)?(youtube\.com\/.*|youtu.be\/.*)/i;
@@ -128,6 +130,9 @@ function titleSwapFactory(anchor) {
                 // Modify for playlist
                 //TODO: maybe add number of songs here? (.feed.entry.length)
                 modifyLink(anchor, title + " (playlist)");
+            } else if (facebookShortenedText == text) {
+                // Modify for video (though it may be a playlist...)
+                modifyLink(anchor, title);
             }
         }
     };
